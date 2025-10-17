@@ -2,6 +2,24 @@
 
 `SwiftAnyCodable` is a Swift package that provides tools to work with heterogeneous or loosely-structured data while maintaining strong type safety and leveraging Swift's powerful `Codable` protocol. It includes support for dynamic coding keys, decoding nested data, and handling any codable value seamlessly.
 
+## Swift 6 & Sendable Support
+
+✨ **SwiftAnyCodable is fully compatible with Swift 6's strict concurrency checking and provides complete `Sendable` support.**
+
+All core types in this library conform to `Sendable`, making them safe to use across concurrency domains:
+
+- **`AnyCodableKey`**: Fully `Sendable` - safe to pass across actor boundaries
+- **`AnyCodableValue`**: Fully `Sendable` - including recursive array and dictionary cases
+- **`InstancesOf<Element>`**: Conditionally `Sendable` when `Element` conforms to `Sendable`
+
+This means you can safely use these types in:
+- Async/await contexts
+- Actor-isolated code
+- Task and TaskGroup operations
+- Any concurrent Swift code
+
+The library compiles without warnings under `-strict-concurrency=complete`.
+
 ## Features
 
 - **`AnyCodableKey`**: A flexible coding key type that supports both string and integer keys.
