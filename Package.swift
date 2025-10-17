@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "swift-any-codable",
+    name: "SwiftAnyCodable",
 	platforms: [
 		.iOS(.v13),
 		.macOS(.v10_15),
@@ -10,17 +10,17 @@ let package = Package(
 	],
     products: [
         .library(
-            name: "AnyCodable",
-			targets: ["AnyCodable"]
+            name: "SwiftAnyCodable",
+			targets: ["SwiftAnyCodable"]
 		),
     ],
     targets: [
         .target(
-			name: "AnyCodable"
+			name: "SwiftAnyCodable"
 		),
         .testTarget(
-            name: "AnyCodableTests",
-            dependencies: ["AnyCodable"]
+            name: "SwiftAnyCodableTests",
+            dependencies: ["SwiftAnyCodable"]
         ),
     ]
 )
