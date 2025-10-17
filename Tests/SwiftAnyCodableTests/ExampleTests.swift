@@ -5,7 +5,7 @@
 
 import Foundation
 import Testing
-import AnyCodable
+import SwiftAnyCodable
 
 @Suite struct ExampleTests {
 

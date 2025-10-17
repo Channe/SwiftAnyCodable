@@ -5,7 +5,7 @@
 
 import Foundation
 import Testing
-@testable import AnyCodable
+@testable import SwiftAnyCodable
 
 @Suite struct UnkeyedDecodingContainerExtensionsTests {
 

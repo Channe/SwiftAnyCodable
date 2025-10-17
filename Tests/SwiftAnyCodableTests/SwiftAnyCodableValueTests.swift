@@ -5,7 +5,7 @@
 
 import Foundation
 import Testing
-@testable import AnyCodable
+@testable import SwiftAnyCodable
 
 @Suite struct AnyCodableValueTests {
 
@@ -945,7 +945,7 @@ import Testing
 }
 
 import XCTest
-//@testable import AnyCodable
+//@testable import SwiftAnyCodable
 
 final class MoreAnyCodableValueTests: XCTestCase {
 

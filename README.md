@@ -1,6 +1,6 @@
-# AnyCodable
+# SwiftAnyCodable
 
-`AnyCodable` is a Swift package that provides tools to work with heterogeneous or loosely-structured data while maintaining strong type safety and leveraging Swift's powerful `Codable` protocol. It includes support for dynamic coding keys, decoding nested data, and handling any codable value seamlessly.
+`SwiftAnyCodable` is a Swift package that provides tools to work with heterogeneous or loosely-structured data while maintaining strong type safety and leveraging Swift's powerful `Codable` protocol. It includes support for dynamic coding keys, decoding nested data, and handling any codable value seamlessly.
 
 ## Features
 
@@ -29,7 +29,7 @@ Add the dependency to any targets you've declared in your manifest:
 .target(
     name: "MyTarget",
     dependencies: [
-        .product(name: "AnyCodable", package: "swift-any-codable"),
+        .product(name: "SwiftAnyCodable", package: "SwiftAnyCodable"),
     ]
 ),
 ```
@@ -41,7 +41,7 @@ Add the dependency to any targets you've declared in your manifest:
 `AnyCodableValue` can encode and decode a variety of primitive types seamlessly. This allows it to be used as a placeholder when you're not sure exactly what kind of data you're going to get.
 
 ```swift
-import AnyCodable
+import SwiftAnyCodable
 
 enum DecodingKeys: String, Hashable {
     case key, nested
@@ -64,7 +64,7 @@ if let array = decoded[.nested]?.arrayValue {
 The combination of `AnyCodableValue` with `AnyCodableKey` provides a flexible solution when working with dynamic or unknown structures, while supporting both string– and integer-based keys. You can decode unfamiliar data in a way that remains accessible via code, while ensuring that it can also be encoded again easily.
 
 ```swift
-import AnyCodable
+import SwiftAnyCodable
 
 struct Post: Codable {
     var title: String
@@ -142,7 +142,7 @@ Take, for instance, this very realistic JSON response from a very real API:
 Instead of needing to write out a complete structured set of models to capture the entire response (six!), you can write _two_, and then use `InstancesOf` to skip past the nonsense, and right to the models you actually care about:
 
 ```swift
-import AnyCodable
+import SwiftAnyCodable
 
 struct Milestone: Decodable, Equatable {
     var title: String
