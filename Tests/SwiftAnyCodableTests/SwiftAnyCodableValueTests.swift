@@ -950,29 +950,29 @@ import XCTest
 final class MoreAnyCodableValueTests: XCTestCase {
 
 	func testTypeSpecificAccessors() {
-		let value = AnyCodableValue(123.45)
-		XCTAssertEqual(value?.doubleValue, 123.45)
-		XCTAssertEqual(value?.integerValue, 123)
-		XCTAssertEqual(value?.floatValue, Float(123.45))
-		XCTAssertNil(value?.stringValue)
+		let value: AnyCodableValue = 123.45
+		XCTAssertEqual(value.doubleValue, 123.45)
+		XCTAssertEqual(value.integerValue, 123)
+		XCTAssertEqual(value.floatValue, Float(123.45))
+		XCTAssertNil(value.stringValue)
 
-		let stringValue = AnyCodableValue("Hello")
-		XCTAssertEqual(stringValue?.stringValue, "Hello")
-		XCTAssertNil(stringValue?.integerValue)
+		let stringValue: AnyCodableValue = "Hello"
+		XCTAssertEqual(stringValue.stringValue, "Hello")
+		XCTAssertNil(stringValue.integerValue)
 	}
 
 	func testEquatabilityAndHashability() {
-		let value1 = AnyCodableValue(123)
-		let value2 = AnyCodableValue(123)
-		let value3 = AnyCodableValue("123")
+		let value1: AnyCodableValue = 123
+		let value2: AnyCodableValue = 123
+		let value3: AnyCodableValue = "123"
 
 		XCTAssertEqual(value1, value2)
 		XCTAssertNotEqual(value1, value3)
 
 		var set: Set<AnyCodableValue> = []
-		set.insert(value1!)
-		XCTAssertTrue(set.contains(value2!))
-		XCTAssertFalse(set.contains(value3!))
+		set.insert(value1)
+		XCTAssertTrue(set.contains(value2))
+		XCTAssertFalse(set.contains(value3))
 	}
 
 }

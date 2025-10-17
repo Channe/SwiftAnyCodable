@@ -26,6 +26,7 @@ The library compiles without warnings under `-strict-concurrency=complete`.
 - **`AnyCodableValue`**: A versatile type that can decode and encode a wide variety of primitive and composite values, such as numbers, strings, arrays, and dictionaries.
 - **`InstancesOf`**: A utility structure to extract collections of a specific type from complex data sources.
 - **Decoding Extensions**: Extensions for `KeyedDecodingContainer` and `UnkeyedDecodingContainer` to simplify decoding collections of specific types, including nested structures.
+- **Literal Support**: `AnyCodableValue` supports Swift literal syntax for strings, integers, floats, booleans, arrays, and dictionaries, making it easy to create values inline.
 
 ### Why would anyone want this?
 
@@ -192,6 +193,60 @@ struct Issue: Decodable, Equatable {
 let milestones = try JSONDecoder().decode(InstancesOf<Milestone>.self, from: jsonData)
 print(Array(milestones)) // [Milestone(title: "v2025.1", issues: [Issue(number: 100, title: "A very real problem!"), Issue(number: 101, title: "Less of a problem, more of a request.")])]
 ```
+
+### Literal Support
+
+`AnyCodableValue` supports Swift's literal syntax, making it incredibly convenient to create values inline:
+
+```swift
+import SwiftAnyCodable
+
+// String literal
+let name: AnyCodableValue = "John Doe"
+
+// Integer literal
+let age: AnyCodableValue = 30
+
+// Float literal
+let price: AnyCodableValue = 19.99
+
+// Boolean literal
+let isActive: AnyCodableValue = true
+
+// Array literal with mixed types
+let items: AnyCodableValue = [
+    "string",
+    42,
+    3.14,
+    true
+]
+
+// Dictionary literal
+let user: AnyCodableValue = [
+    "name": "Alice",
+    "age": 25,
+    "isActive": true,
+    "tags": ["swift", "ios", "developer"]
+]
+
+// Nested structures
+let response: AnyCodableValue = [
+    "status": "success",
+    "data": [
+        "user": [
+            "id": 123,
+            "name": "Bob",
+            "email": "bob@example.com"
+        ],
+        "metadata": [
+            "timestamp": 1234567890,
+            "version": "2.0"
+        ]
+    ]
+]
+```
+
+This makes working with dynamic data structures much more ergonomic, especially when constructing test data or working with loosely-typed APIs.
 
 ## License
 

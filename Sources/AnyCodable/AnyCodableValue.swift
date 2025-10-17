@@ -662,3 +662,77 @@ public enum AnyCodableValue: Codable, Hashable, Equatable, CustomDebugStringConv
 
 }
 
+// MARK: - Literal Support
+
+extension AnyCodableValue: ExpressibleByStringLiteral {
+
+	/// Initializes an `AnyCodableValue` from a string literal.
+	///
+	/// - Parameter value: The string literal value.
+	public init(stringLiteral value: String) {
+		self = .string(value)
+	}
+
+}
+
+extension AnyCodableValue: ExpressibleByIntegerLiteral {
+
+	/// Initializes an `AnyCodableValue` from an integer literal.
+	///
+	/// - Parameter value: The integer literal value.
+	public init(integerLiteral value: Int) {
+		self = .integer(value)
+	}
+
+}
+
+extension AnyCodableValue: ExpressibleByFloatLiteral {
+
+	/// Initializes an `AnyCodableValue` from a float literal.
+	///
+	/// - Parameter value: The float literal value.
+	public init(floatLiteral value: Double) {
+		self = .double(value)
+	}
+
+}
+
+extension AnyCodableValue: ExpressibleByBooleanLiteral {
+
+	/// Initializes an `AnyCodableValue` from a boolean literal.
+	///
+	/// - Parameter value: The boolean literal value.
+	public init(booleanLiteral value: Bool) {
+		self = .bool(value)
+	}
+
+}
+
+extension AnyCodableValue: ExpressibleByArrayLiteral {
+
+	/// Initializes an `AnyCodableValue` from an array literal.
+	///
+	/// - Parameter elements: The array literal elements.
+	public init(arrayLiteral elements: AnyCodableValue...) {
+		self = .array(elements)
+	}
+
+}
+
+extension AnyCodableValue: ExpressibleByDictionaryLiteral {
+
+	/// Initializes an `AnyCodableValue` from a dictionary literal.
+	///
+	/// Dictionary literals must use `AnyCodableKey` as keys (typically string or integer literals).
+	///
+	/// - Parameter elements: The dictionary literal key-value pairs.
+	public init(dictionaryLiteral elements: (AnyCodableKey, AnyCodableValue)...) {
+		var dictionary: [AnyCodableKey: AnyCodableValue] = [:]
+		for (key, value) in elements {
+			dictionary[key] = value
+		}
+		self = .dictionary(dictionary)
+	}
+
+}
+
